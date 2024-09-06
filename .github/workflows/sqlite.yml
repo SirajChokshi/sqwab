@@ -45,7 +45,7 @@ jobs:
 
     # Unpack tarball
     - name: Unpack tarball
-      run: curl ${{inputs.source_url}} | tar xzf -
+      run: curl -L ${{inputs.source_url}} | tar xzf -
 
     # Overlay files onto SQLite tree
     - run: tar -C overlay.sqlite -cf - . | tar -C sqlite -xvf -
