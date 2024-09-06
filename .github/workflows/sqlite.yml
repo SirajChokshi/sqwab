@@ -7,7 +7,7 @@ on:
     inputs:
       source_url:
         description: 'Source tarball URL'
-        default: 'https://www.sqlite.org/src/tarball/sqlite.tar.gz?r=release'
+        default: 'https://github.com/sqlcipher/sqlcipher/archive/refs/tags/v4.6.1.tar.gz'
         required: true
         type: string
 
@@ -41,7 +41,7 @@ jobs:
       with:
         version: ${{inputs.em_version}}
         actions-cache-folder: ${{env.EM_CACHE_FOLDER}}
-    - run: emcc -v
+    - run: emcc -v -DSQLITE_HAS_CODEC -DSQLCIPHER_CRYPTO_OPENSSL
 
     # Unpack tarball
     - name: Unpack tarball
