@@ -47,6 +47,9 @@ jobs:
     - name: Unpack tarball
       run: curl -L ${{inputs.source_url}} | tar xzf -
 
+    - name: Move SQLCipher to sqlite folder
+      run: mv sqlcipher-4.6.1 sqlite
+
     # Overlay files onto SQLite tree
     - run: tar -C overlay.sqlite -cf - . | tar -C sqlite -xvf -
     
